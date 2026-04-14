@@ -1,0 +1,109 @@
+# SECRETS
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+!secrets/README.md
+credentials/
+tokens/
+# Ignore all text files by default to avoid leaking notes/keys
+*.txt
+*.gd
+!README.md
+!PORTABILITY.md
+!ORCHESTRATOR_UPDATE.md
+!requirements.txt
+!requirements-train.txt
+
+# PYTHON
+__pycache__/
+*.py[cod]
+.venv*/
+venv/
+env/
+
+# NODE
+node_modules/
+
+# AI/ML
+*.ckpt
+*.safetensors
+*.pth
+*.bin
+*.gguf
+*.log.txt
+chroma_db/
+qdrant_storage/
+.ollama/
+.openclaw/
+memory/
+_archive/
+
+# ENGINES
+.godot/
+.import/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# HEAVY ASSETS
+study/
+unsloth_compiled_cache/
+training/outputs/
+*unsloth_compiled_cache/
+
+# TRAINING RUNTIME ARTIFACTS
+training/*.log
+training/*.out
+training/*.pid
+training/nohup*
+training/.venv/
+training/outputs/**
+training/unsloth_compiled_cache/**
+training/data/*.jsonl
+!training/data/gamedev_sft_10.jsonl
+!training/data/gamedev_sft_20.jsonl
+!training/data/gamedev_sft_30.jsonl
+wandb/
+mlruns/
+tensorboard/
+events.out.tfevents*
+checkpoints/
+**/checkpoint-*/
+**/runs/
+
+# SYSTEM
+/proc
+/sys
+/dev
+/mnt/c
+/mnt/d
+
+# MISC
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+personal_data/
+*.bak
+*.tmp
+*.old
+*.orig
+
+TRAINING_ACTION_LOG_*.md
+ubuntu_research.md
+data/
+scripts/auto_generated_shader_controller.gd
+tests/
+**/test_*.py
+pytest.ini
+.pytest_cache/
+poc/

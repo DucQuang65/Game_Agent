@@ -1,0 +1,28 @@
+# ⚡ Game Agent Training Requirements (RTX 4060 Optimized)
+# Dependencies for QLoRA fine-tuning with Unsloth on WSL2/Ubuntu.
+
+# 1. Base Frameworks
+torch>=2.4.0
+torchvision
+torchaudio
+--index-url https://download.pytorch.org/whl/cu121
+
+# 2. Training Core (Unsloth & Transformers)
+unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+transformers>=4.44.0
+peft
+accelerate
+bitsandbytes
+trl
+xformers
+
+# 3. Data Processing
+datasets
+sentencepiece
+protobuf
+huggingface_hub
+
+# 4. Monitoring & Visualization
+tensorboard
+wandb
+tqdm

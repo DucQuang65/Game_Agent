@@ -1,0 +1,11 @@
+langchain
+langgraph
+langchain-ollama
+google-genai
+datasets
+unsloth
+bitsandbytes
+transformers
+accelerate
+peft
+trl

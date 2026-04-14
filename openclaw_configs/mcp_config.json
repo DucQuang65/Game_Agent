@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "godot-mcp": {
+      "command": "python3",
+      "args": ["-m", "godot_mcp_server"],
+      "env": {
+        "GODOT_PATH": "godot",
+        "PROJECT_ROOT": "./"
+      }
+    },
+    "filesystem-mcp": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./"]
+    },
+    "github-mcp": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"]
+    }
+  }
+}

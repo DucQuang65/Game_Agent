@@ -1,0 +1,9 @@
+[submodule "study/godot-cpp"]
+	path = study/godot-cpp
+	url = https://github.com/godotengine/godot-cpp
+[submodule "study/godot_dialogue_manager"]
+	path = study/godot_dialogue_manager
+	url = https://github.com/nathanhoad/godot_dialogue_manager
+[submodule "study/monitor_overlay"]
+	path = study/monitor_overlay
+	url = https://github.com/HungryProton/monitor_overlay

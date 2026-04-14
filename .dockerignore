@@ -1,0 +1,13 @@
+.git
+.venv
+.venv*
+__pycache__
+*.pyc
+study
+training/outputs
+unsloth_compiled_cache
+secrets
+memory
+_archive
+.vscode
+.idea

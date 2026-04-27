@@ -9,3 +9,8 @@ transformers
 accelerate
 peft
 trl
+chromadb
+
+# ── Dev / Testing ──────────────────────────────────────────────
+pytest
+pytest-cov

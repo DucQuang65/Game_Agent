@@ -1,6 +1,5 @@
 from importlib import import_module
-from typing import Any, Dict, Optional, List, Annotated
-from .state import AgentState
+from typing import Any, Dict, Optional
 
 _PACKAGE_NAME = __name__.rpartition(".")[0] or None
 
@@ -31,29 +30,36 @@ def build_app() -> Any:
     langgraph_graph = import_module("langgraph.graph")
     state_graph_cls = langgraph_graph.StateGraph
     end_sentinel = langgraph_graph.END
+
+    try:
+        state_mod = import_module(".state", package=_PACKAGE_NAME)
+    except (Exception, ImportError):
+        state_mod = import_module("state")
+
+    agent_state = state_mod.AgentState
     
     res_node, arch_node, cod_node, val_node = _load_nodes()
 
-    workflow = state_graph_cls(AgentState)
+    workflow = state_graph_cls(agent_state)
 
-    workflow.add_node("researcher", res_node)
-    workflow.add_node("architect", arch_node)
-    workflow.add_node("coder", cod_node)
-    workflow.add_node("validation", val_node)
+    workflow.add_node("director", res_node)    # High-level vision & research
+    workflow.add_node("lead_architect", arch_node)  # Technical planning
+    workflow.add_node("specialist_coder", cod_node) # Hands-on execution
+    workflow.add_node("qa_validation", val_node)    # Quality assurance
 
-    workflow.set_entry_point("researcher")
+    workflow.set_entry_point("director")
 
-    workflow.add_edge("researcher", "architect")
-    workflow.add_edge("architect", "coder")
-    workflow.add_edge("coder", "validation")
+    workflow.add_edge("director", "lead_architect")
+    workflow.add_edge("lead_architect", "specialist_coder")
+    workflow.add_edge("specialist_coder", "qa_validation")
 
     # Decide whether to loop back or end.
-    def should_continue(state: AgentState):
+    def should_continue(state: Dict[str, Any]):
         if state.get("task_complete"):
             return end_sentinel
-        return "coder"
+        return "specialist_coder"
 
-    workflow.add_conditional_edges("validation", should_continue)
+    workflow.add_conditional_edges("qa_validation", should_continue)
     return workflow.compile()
 
 

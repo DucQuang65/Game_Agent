@@ -1,0 +1,36 @@
+{
+  "mcp_version": "1.0",
+  "provider": "Game_Agent_OS",
+  "skills_mapping": {
+    "architect": {
+      "path": "AI_Training/skills/senior-architect.md",
+      "model_bias": "deepseek-r1:7b",
+      "auto_load": true
+    },
+    "reviewer": {
+      "path": "AI_Training/skills/code-reviewer.md",
+      "model_bias": "qwen2.5-coder:7b",
+      "auto_load": false
+    },
+    "performance_audit": {
+      "path": "AI_Training/skills/performance.md",
+      "model_bias": "qwen2.5-coder:7b",
+      "auto_load": false
+    },
+    "math_geometry": {
+      "path": "AI_Training/skills/math-geometry.md",
+      "model_bias": "qwen2.5-coder:7b",
+      "auto_load": false
+    },
+    "security_expert": {
+      "path": "AI_Training/skills/security.md",
+      "model_bias": "deepseek-r1:7b",
+      "auto_load": false
+    },
+    "external_catalog": {
+      "path": "study/external/claude-skills-catalog.md",
+      "description": "Index of 380+ on-demand engineering and product skills.",
+      "auto_load": false
+    }
+  }
+}

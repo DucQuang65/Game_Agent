@@ -52,7 +52,7 @@ async def _parallel_tool_enrichment(raw_context: str, query: str) -> str:
     async def intent_tool() -> str:
         lowered = query.lower()
         intent = "recent_update" if any(k in lowered for k in (
-            "latest", "patch", "release", "news", "moi", "mới", "2026", "4.7"
+            "latest", "patch", "release", "news", "update", "current", "2026", "4.7"
         )) else "general"
         return f"[PARALLEL_TOOLS] intent: {intent}"
 
@@ -120,7 +120,7 @@ def _is_grounding_needed(local_context: str, query: str) -> bool:
         return True
     lowered = query.lower()
     return any(k in lowered for k in (
-        "latest", "patch", "release", "news", "moi", "mới", "today", "2026", "4.7"
+        "latest", "patch", "release", "news", "update", "current", "today", "2026", "4.7"
     ))
 
 

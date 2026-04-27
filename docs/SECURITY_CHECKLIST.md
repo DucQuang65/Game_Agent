@@ -1,4 +1,36 @@
-# OpenClaw Security Checklist (WSL Ubuntu)
+# 🛡️ Game Agent OS — Security Checklist
+
+## 0) Data Privacy & Log Protection
+
+> [!CAUTION]
+> Failure to follow these rules may expose user conversation history to public log files.
+
+### 0.1 Log Rotation Policy
+- All files in `logs/` **must** be purged or rotated every **7 days**.
+- Configure via `logrotate` or a cron job:
+  ```bash
+  # /etc/logrotate.d/game-agent
+  /home/asus/Game_Agent/logs/*.log {
+      daily
+      rotate 7
+      compress
+      missingok
+      notifempty
+      delaycompress
+  }
+  ```
+
+### 0.2 Log Anonymization Rules
+- **DO NOT** log raw message content from Telegram, API responses, or user prompts.
+- Log format must be restricted to: `[timestamp] | [agent_id] | [task_type] | [status]`
+- **Example (correct)**: `2026-04-27T14:30Z | coder | code_generation | success`
+- **Example (wrong — never do this)**: `User asked: how do I hack...`
+
+### 0.3 Git Safety
+- Ensure all of the following are in `.gitignore`:
+  - `logs/`, `data/`, `chroma_db/`, `secrets/`, `.env`, `openclaw.json`
+
+---
 
 ## 1) Rotate all exposed secrets first
 
@@ -24,13 +56,13 @@ nano ~/.openclaw/openclaw.json
 3. Validate and auto-fix:
 
 ```bash
-/home/User/.npm-global/bin/openclaw doctor --fix
+$HOME/.npm-global/bin/openclaw doctor --fix
 ```
 
 4. Re-check sandbox effective policy:
 
 ```bash
-/home/User/.npm-global/bin/openclaw sandbox explain --json
+$HOME/.npm-global/bin/openclaw sandbox explain --json
 ```
 
 ## 3) Lock Telegram DM to your account only
@@ -38,8 +70,8 @@ nano ~/.openclaw/openclaw.json
 Use your numeric Telegram user ID:
 
 ```bash
-/home/User/.npm-global/bin/openclaw config set channels.telegram.dmPolicy 'allowlist'
-/home/User/.npm-global/bin/openclaw config set channels.telegram.allowFrom '["YOUR_TELEGRAM_USER_ID"]'
+$HOME/.npm-global/bin/openclaw config set channels.telegram.dmPolicy 'allowlist'
+$HOME/.npm-global/bin/openclaw config set channels.telegram.allowFrom '["YOUR_TELEGRAM_USER_ID"]'
 ```
 
 ## 4) Verify web search still works
@@ -51,7 +83,7 @@ Use your numeric Telegram user ID:
 2. Confirm from runtime:
 
 ```bash
-/home/User/.npm-global/bin/openclaw status
+$HOME/.npm-global/bin/openclaw status
 ```
 
 ## 5) Clean old logs after rotation
@@ -67,7 +99,7 @@ rm -f ~/.openclaw/logs/*.log
 1. Run periodic security audits:
 
 ```bash
-/home/User/.npm-global/bin/openclaw security audit --deep
+$HOME/.npm-global/bin/openclaw security audit --deep
 ```
 
 2. Keep session isolation for DMs:

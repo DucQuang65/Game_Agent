@@ -25,9 +25,9 @@ else
 fi
 
 # 4. Create Virtual Environment
-echo "🐍 Creating .venv..."
-python3 -m venv .venv
-source .venv/bin/activate
+echo "🐍 Creating .venv_agent..."
+python3 -m venv .venv_agent
+source .venv_agent/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 

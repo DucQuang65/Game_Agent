@@ -1,19 +1,8 @@
+import chromadb  # pyre-ignore[21]
 import uuid
 from datetime import datetime
 import os
 import argparse
-
-try:
-    import chromadb  # pyre-ignore[21]
-except ModuleNotFoundError:
-    class _MissingChromaDB:
-        @staticmethod
-        def PersistentClient(*_args, **_kwargs):
-            raise ModuleNotFoundError(
-                "chromadb is required to use TaskManager. Install dependencies from requirements.txt."
-            )
-
-    chromadb = _MissingChromaDB()
 
 # Configuration
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

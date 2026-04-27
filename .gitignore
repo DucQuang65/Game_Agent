@@ -87,48 +87,23 @@ checkpoints/
 /mnt/c
 /mnt/d
 
-# LOGS & TEMPORARY
-logs/
-*.log
-.coverage
-coverage.xml
-.pytest_cache/
-
-# SECURITY
-openclaw.json
-Openclaw.txt
-.env
-.env.*
-!.env.example
-.env.local
-.env.*.bak
-*.env.bak
-*.pem
-*.key
-*.p12
-*.pfx
-
 # MISC
 .vscode/
 .idea/
 .DS_Store
-_archive/
-training.log
+Thumbs.db
+personal_data/
+*.bak
+*.tmp
+*.old
+*.orig
+
+TRAINING_ACTION_LOG_*.md
 ubuntu_research.md
 data/
+scripts/auto_generated_shader_controller.gd
 tests/
 **/test_*.py
 pytest.ini
+.pytest_cache/
 poc/
-unsloth_compiled_cache/
-unsloth_compiled_cache_new/
-
-# AI Agent artifacts (not project code)
-task.md
-walkthrough.md
-
-# Backup files
-*.bak
-
-# Windows ADS metadata files
-*:Zone.Identifier

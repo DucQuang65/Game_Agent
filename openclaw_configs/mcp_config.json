@@ -12,22 +12,6 @@
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-filesystem", "./"]
     },
-    "unity-mcp-primary": {
-      "command": "node",
-      "args": ["study/external/Unity-MCP/server/dist/index.js"],
-      "env": {
-        "UNITY_PORT": "8090",
-        "TRANSPORT": "stdio"
-      }
-    },
-    "unity-mcp-wsl-bridge": {
-      "command": "npx",
-      "args": ["-y", "mcp-unity"],
-      "env": {
-        "UNITY_PROJECT_ROOT": "./",
-        "WSL_MIRROR_MODE": "true"
-      }
-    },
     "github-mcp": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-github"]
